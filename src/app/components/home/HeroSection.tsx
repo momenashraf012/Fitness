@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { ArrowLeft, PlayCircle } from 'lucide-react';
+import { Link } from 'react-router';
 import { IMAGES } from '../../../constants/images';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 
@@ -61,7 +62,11 @@ function Title() {
       transition={{ duration: 0.5, delay: 0.1 }}
       className="text-5xl md:text-7xl font-extrabold leading-tight mb-6"
     >
-      اكتشف <span className="text-transparent bg-clip-text bg-gradient-to-l from-yellow-400 to-yellow-600">قوتك الحقيقية</span><br />
+      اكتشف{' '}
+      <span className="text-transparent bg-clip-text bg-gradient-to-l from-yellow-400 to-yellow-600">
+        قوتك الحقيقية
+      </span>
+      <br />
       وتجاوز كل الحدود
     </motion.h1>
   );
@@ -75,12 +80,21 @@ function Description() {
       transition={{ duration: 0.5, delay: 0.2 }}
       className="text-lg md:text-xl text-zinc-400 mb-10 max-w-xl leading-relaxed"
     >
-      انضم إلى أقوى مجتمع رياضي في المنطقة. احصل على أفضل المعدات والمدربين المحترفين لتحقيق أهدافك وبناء جسم مثالي.
+      انضم إلى أقوى مجتمع رياضي في المنطقة. احصل على أفضل المعدات والمدربين المحترفين
+      لتحقيق أهدافك وبناء جسم مثالي.
     </motion.p>
   );
 }
 
 function Actions() {
+  const scrollToPrograms = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const element = document.getElementById('programs');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -88,14 +102,21 @@ function Actions() {
       transition={{ duration: 0.5, delay: 0.3 }}
       className="flex flex-col sm:flex-row items-center gap-4"
     >
-      <button className="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-400 text-zinc-950 text-lg font-bold py-4 px-8 rounded-full transition-all flex items-center justify-center gap-2 group">
+      <Link
+        to="/register"
+        className="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-400 text-zinc-950 text-lg font-bold py-4 px-8 rounded-full transition-all flex items-center justify-center gap-2 group"
+      >
         ابدأ رحلتك الآن
         <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-      </button>
-      <button className="w-full sm:w-auto bg-white/10 hover:bg-white/15 text-white text-lg font-medium py-4 px-8 rounded-full backdrop-blur-sm transition-all flex items-center justify-center gap-2">
+      </Link>
+      <a
+        href="#programs"
+        onClick={scrollToPrograms}
+        className="w-full sm:w-auto bg-white/10 hover:bg-white/15 text-white text-lg font-medium py-4 px-8 rounded-full backdrop-blur-sm transition-all flex items-center justify-center gap-2"
+      >
         <PlayCircle className="w-5 h-5" />
-        شاهد الجيم
-      </button>
+        شاهد البرامج
+      </a>
     </motion.div>
   );
 }

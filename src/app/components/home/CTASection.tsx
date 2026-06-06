@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import { IMAGES } from '../../../constants/images';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 
@@ -33,9 +34,12 @@ function Content() {
       <p className="text-xl text-zinc-300 mb-10">
         انضم إلينا اليوم واحصل على تقييم مجاني للياقتك البدنية وتجربة ليوم كامل.
       </p>
-      <button className="bg-yellow-500 hover:bg-yellow-400 text-zinc-950 text-xl font-bold py-5 px-10 rounded-full transition-transform hover:scale-105">
+      <Link
+        to="/register"
+        className="inline-flex items-center justify-center bg-yellow-500 hover:bg-yellow-400 text-zinc-950 text-xl font-bold py-5 px-10 rounded-full transition-transform hover:scale-105"
+      >
         احجز تجربتك المجانية
-      </button>
+      </Link>
     </div>
   );
 }

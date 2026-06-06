@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Check } from 'lucide-react';
+import { Link } from 'react-router';
 import { PRICING_PLANS } from '../../../constants/home-data';
 
 export default function PricingSection() {
@@ -99,14 +100,15 @@ interface PlanButtonProps {
 
 function PlanButton({ isPopular }: PlanButtonProps) {
   return (
-    <button
-      className={`w-full py-4 rounded-xl font-bold transition-all ${
+    <Link
+      to="/register"
+      className={`w-full py-4 rounded-xl font-bold transition-all block text-center ${
         isPopular
           ? 'bg-yellow-500 hover:bg-yellow-400 text-zinc-950'
           : 'bg-white/10 hover:bg-white/20 text-white'
       }`}
     >
       اشترك الآن
-    </button>
+    </Link>
   );
 }

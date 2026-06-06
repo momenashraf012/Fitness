@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { ArrowLeft } from 'lucide-react';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { PROGRAMS } from '../../../constants/home-data';
 import { IMAGES } from '../../../constants/images';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
@@ -30,13 +30,17 @@ function Header() {
       <div className="max-w-2xl">
         <h2 className="text-3xl md:text-5xl font-bold mb-6">برامجنا التدريبية</h2>
         <p className="text-zinc-400 text-lg">
-          مهما كان هدفك، لدينا البرنامج المناسب لك. انضم إلى فصولنا الجماعية المليئة بالحماس والطاقة.
+          مهما كان هدفك، لدينا البرنامج المناسب لك. انضم إلى فصولنا الجماعية المليئة بالحماس
+          والطاقة.
         </p>
       </div>
-      <button className="hidden md:flex items-center gap-2 text-yellow-500 font-bold hover:gap-4 transition-all">
+      <Link
+        to="/classes"
+        className="hidden md:flex items-center gap-2 text-yellow-500 font-bold hover:gap-4 transition-all"
+      >
         عرض كل البرامج
         <ArrowLeft className="w-5 h-5" />
-      </button>
+      </Link>
     </div>
   );
 }
@@ -112,9 +116,12 @@ function ProgramContent({ program }: ProgramContentProps) {
 
 function ViewAllButton() {
   return (
-    <button className="w-full mt-10 md:hidden flex items-center justify-center gap-2 text-yellow-500 font-bold border border-yellow-500/30 rounded-xl py-4 bg-yellow-500/5">
+    <Link
+      to="/classes"
+      className="w-full mt-10 md:hidden flex items-center justify-center gap-2 text-yellow-500 font-bold border border-yellow-500/30 rounded-xl py-4 bg-yellow-500/5"
+    >
       عرض كل البرامج
       <ArrowLeft className="w-5 h-5" />
-    </button>
+    </Link>
   );
 }
